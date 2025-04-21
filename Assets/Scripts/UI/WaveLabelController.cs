@@ -13,13 +13,22 @@ public class WaveLabelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.state == GameManager.GameState.INWAVE)
+        switch (GameManager.Instance.state)
         {
-            tmp.text = "Enemies left: " + GameManager.Instance.enemy_count;
-        }
-        if (GameManager.Instance.state == GameManager.GameState.COUNTDOWN)
-        {
-            tmp.text = "Starting in " + GameManager.Instance.countdown;
+            case GameManager.GameState.INWAVE:
+                tmp.text = "Enemies left: " + GameManager.Instance.enemy_count;
+                break;
+            case GameManager.GameState.COUNTDOWN:
+                tmp.text = "Starting in " + GameManager.Instance.countdown;
+                break;
+            case GameManager.GameState.ENDINGWAVE:
+                tmp.text = "Total Enemies Killed: " + GameManager.Instance.totalEnemiesForWave;
+                break;
+            case GameManager.GameState.GAMEOVER:
+                tmp.text = "GAME OVER";
+                break;
+            default:
+                break;
         }
     }
 }

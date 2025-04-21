@@ -76,12 +76,16 @@ public class EnemySpawner : MonoBehaviour
         
         GameManager.Instance.state = GameManager.GameState.INWAVE;
 
+        GameManager.Instance.totalEnemiesForWave = 0;
+
         foreach (var spawn in currentLevel.spawns) {
             var vars = new Dictionary<string, int> {
                 { "wave", GameManager.Instance.currentWave },
             };
             
             int totalCount = RPN.eval(spawn.count, vars);
+
+            GameManager.Instance.totalEnemiesForWave += totalCount;
 
             Debug.Log(spawn.enemy + " - " + totalCount);
 
@@ -104,6 +108,10 @@ public class EnemySpawner : MonoBehaviour
         }
         
         yield return new WaitWhile(() => GameManager.Instance.enemy_count > 0);
+        
+        GameManager.Instance.state = GameManager.GameState.ENDINGWAVE;
+        
+        yield return new WaitForSeconds(5f);
         
         GameManager.Instance.state = GameManager.GameState.WAVEEND;
     }
