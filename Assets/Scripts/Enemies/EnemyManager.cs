@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 public class EnemyManager{
-    private List<Enemy> EnemyData;
+    private Dictionary<string, Enemy> enemyTypes = new Dictionary<string, Enemy>();
     private static EnemyManager theInstance;
     public static EnemyManager Instance {  get
         {
@@ -15,9 +15,15 @@ public class EnemyManager{
     }
 
     private EnemyManager(){
-        TextAsset jsonFile = Resources.Load<TextAsset>("enemies.json");
-        EnemyData = JsonUtility.FromJson<List<Enemy>>(jsonFile.text);
-        Debug.Log(EnemyData);
+        TextAsset jsonFile = Resources.Load<TextAsset>("enemies");
+
+        JToken jo = JToken.Parse(jsonFile.text);
+
+        foreach (var enemy in jo)
+        {
+            Enemy en = enemy.ToObject<Enemy>();
+            enemyTypes[en.name] = en;
+        }
     }
 }
 

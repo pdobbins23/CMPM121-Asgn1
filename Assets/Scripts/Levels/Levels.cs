@@ -2,13 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+
 [System.Serializable]
-
-public class Levels {
-    string name;
-
-    int waves;
-
+public class Level {
     public class Spawn{
         string enemy;
         
@@ -23,5 +19,8 @@ public class Levels {
         string location;
 
     }
-    Spawn[] spawns;
+
+    public string name;
+    public int waves;
+    public Spawn[] spawns;
 }

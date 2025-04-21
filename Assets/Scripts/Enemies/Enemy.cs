@@ -2,15 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-[System.Serializable]
 
+[System.Serializable]
 public class Enemy
 {
-    string name;
-    int sprite;
-    int hp;
-    int speed;
-    int damage; 
-
+    public string name;
+    public int sprite;
+    public int hp;
+    public int speed;
+    public int damage; 
 }
 

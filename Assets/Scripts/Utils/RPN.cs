@@ -1,3 +1,6 @@
+using UnityEngine;
+using System.Collections.Generic;
+
 public class RPN {
     public static int eval(string exp, Dictionary<string, int> vars){
         Stack<int> nums = new Stack<int>();
@@ -14,38 +17,45 @@ public class RPN {
                 }
                 else{
                     switch(token){
-                        case "+":
+                        case "+": {
                             int a = nums.Pop();
                             int b = nums.Pop();
                             nums.Push(a + b);
                             break;
-                        case "-":
+                        }
+                        case "-": {
                             int a = nums.Pop();
                             int b = nums.Pop();
                             nums.Push(a - b);
                             break;
-                        case "*":
+                        }
+                        case "*": {
                             int a = nums.Pop();
                             int b = nums.Pop();
                             nums.Push(a * b);
                             break;
-                        case "/":
+                        }
+                        case "/": {
                             int a = nums.Pop();
                             int b = nums.Pop();
                             nums.Push(a / b);
                             break;
-                        case "%":
+                        }
+                        case "%": {
                             int a = nums.Pop();
                             int b = nums.Pop();
                             nums.Push(a % b);
                             break;
+                        }
                         default:
-                            Console.WriteLine("RPN Parse Error");
+                            Debug.Log("RPN Parse Error");
                             return 0;
                     }
                 }
             }
 
         }
+
+        return nums.Pop();
     }
 }

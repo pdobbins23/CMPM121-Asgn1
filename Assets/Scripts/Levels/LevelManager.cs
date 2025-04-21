@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-public class LevelManager{
-    private List<Level> LevelData;
+public class LevelManager {
+    private Dictionary<string, Level> levelTypes = new Dictionary<string, Level>();
     private static LevelManager theInstance;
     public static LevelManager Instance {  get
         {
@@ -15,8 +15,14 @@ public class LevelManager{
     }
 
     private LevelManager(){
-        TextAsset jsonFile = Resources.Load<TextAsset>("levels.json");
-        LevelData = JsonUtility.FromJson<List<Level>>(jsonFile.text);
-        Debug.Log(LevelData);
+        TextAsset jsonFile = Resources.Load<TextAsset>("levels");
+
+        JToken jo = JToken.Parse(jsonFile.text);
+
+        foreach (var level in jo)
+        {
+            Level lvl = level.ToObject<Level>();
+            levelTypes[lvl.name] = lvl;
+        }
     }
 }
