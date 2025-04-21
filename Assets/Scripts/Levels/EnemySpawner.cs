@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
                     NextWave();
                 } else {
                     GameManager.Instance.state = GameManager.GameState.GAMEOVER;
+
                 }
                 break;
             default:
@@ -59,6 +60,10 @@ public class EnemySpawner : MonoBehaviour
 
     public void NextWave()
     {
+        GameObject selector = Instantiate(button, level_selector.transform);
+        selector.transform.localPosition = new Vector3(0, 130 + -50 * i);
+        selector.GetComponent<WaveButton>().spawner = this;
+        selector.GetComponent<WaveButton>().startLevel();
         StartCoroutine(SpawnWave());
     }
 

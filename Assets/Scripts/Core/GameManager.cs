@@ -19,6 +19,7 @@ public class GameManager
     public int countdown;
     public int currentWave = 1;
     public int totalEnemiesForWave = 0;
+
     
     private static GameManager theInstance;
     public static GameManager Instance {  get
