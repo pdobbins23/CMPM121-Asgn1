@@ -10,14 +10,22 @@ using System.Linq;
 public class EnemySpawner : MonoBehaviour
 {
     public Image level_selector;
+    public GameObject relicui;
     public GameObject button;
+    public GameObject waveContinueButton;
     public GameObject enemy;
     public SpawnPoint[] SpawnPoints;
     public Level currentLevel;
 
+    private GameObject continueBtn;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        continueBtn = Instantiate(waveContinueButton, relicui.transform);
+        continueBtn.transform.localPosition = new Vector3(0, -100);
+        continueBtn.gameObject.SetActive(false);
+        
         int i = 0;
         foreach (var level in LevelManager.Instance.levelTypes.Values) {
             GameObject selector = Instantiate(button, level_selector.transform);
@@ -37,6 +45,8 @@ public class EnemySpawner : MonoBehaviour
                     
                 if (currentLevel.waves == -1 || GameManager.Instance.currentWave < currentLevel.waves) {
                     GameManager.Instance.state = GameManager.GameState.COUNTDOWN;
+                    continueBtn.gameObject.SetActive(false);
+                    
                     NextWave();
                 } else {
                     GameManager.Instance.state = GameManager.GameState.GAMEOVER;
@@ -60,10 +70,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void NextWave()
     {
-        GameObject selector = Instantiate(button, level_selector.transform);
-        selector.transform.localPosition = new Vector3(0, 130 + -50 * i);
-        selector.GetComponent<WaveButton>().spawner = this;
-        selector.GetComponent<WaveButton>().startLevel();
         StartCoroutine(SpawnWave());
     }
 
@@ -116,9 +122,7 @@ public class EnemySpawner : MonoBehaviour
         
         GameManager.Instance.state = GameManager.GameState.ENDINGWAVE;
         
-        yield return new WaitForSeconds(5f);
-        
-        GameManager.Instance.state = GameManager.GameState.WAVEEND;
+        continueBtn.gameObject.SetActive(true);
     }
 
     IEnumerator SpawnEnemy(int wave, Enemy e, Level.Spawn s)
