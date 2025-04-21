@@ -21,5 +21,5 @@ public class WaveLabelController : MonoBehaviour
         {
             tmp.text = "Starting in " + GameManager.Instance.countdown;
         }
-    }g
+    }
 }
