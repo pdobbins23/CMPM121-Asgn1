@@ -55,5 +55,7 @@ public class GameManager
     private GameManager()
     {
         enemies = new List<GameObject>();
+        
     }
 }
+
