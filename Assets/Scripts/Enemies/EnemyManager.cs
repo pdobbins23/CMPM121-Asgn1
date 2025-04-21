@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 public class EnemyManager{
-    private Dictionary<string, Enemy> enemyTypes = new Dictionary<string, Enemy>();
+    public Dictionary<string, Enemy> enemyTypes = new Dictionary<string, Enemy>();
+
     private static EnemyManager theInstance;
     public static EnemyManager Instance {  get
         {

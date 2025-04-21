@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 public class LevelManager {
-    private Dictionary<string, Level> levelTypes = new Dictionary<string, Level>();
+    public Dictionary<string, Level> levelTypes = new Dictionary<string, Level>();
+
     private static LevelManager theInstance;
     public static LevelManager Instance {  get
         {

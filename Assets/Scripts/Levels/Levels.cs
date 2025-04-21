@@ -6,21 +6,20 @@ using Newtonsoft.Json.Linq;
 [System.Serializable]
 public class Level {
     public class Spawn{
-        string enemy;
-        
-        string count;
+        public string enemy;
 
-        string hp;
+        public string count;
 
-        string delay;
+        public string hp = "base";
 
-        int[] sequence;
+        public int delay = 2;
 
-        string location;
+        public int[] sequence = {1};
 
+        public string location = "random";
     }
 
     public string name;
-    public int waves;
+    public int waves = -1;
     public Spawn[] spawns;
 }

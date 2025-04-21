@@ -20,31 +20,31 @@ public class RPN {
                         case "+": {
                             int a = nums.Pop();
                             int b = nums.Pop();
-                            nums.Push(a + b);
+                            nums.Push(b + a);
                             break;
                         }
                         case "-": {
                             int a = nums.Pop();
                             int b = nums.Pop();
-                            nums.Push(a - b);
+                            nums.Push(b - a);
                             break;
                         }
                         case "*": {
                             int a = nums.Pop();
                             int b = nums.Pop();
-                            nums.Push(a * b);
+                            nums.Push(b * a);
                             break;
                         }
                         case "/": {
                             int a = nums.Pop();
                             int b = nums.Pop();
-                            nums.Push(a / b);
+                            nums.Push(b / a);
                             break;
                         }
                         case "%": {
                             int a = nums.Pop();
                             int b = nums.Pop();
-                            nums.Push(a % b);
+                            nums.Push(b % a);
                             break;
                         }
                         default:
