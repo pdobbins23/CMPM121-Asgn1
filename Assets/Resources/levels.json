@@ -23,7 +23,13 @@
                 "count": "wave 5 / 1 wave 5 % - *",
                 "hp": "100 25 wave *",
                 "location": "random bone"
-            }       
+            },
+            {
+                "enemy": "dragon",
+                "count": "wave 4 / 1 wave 4 % - *",
+                "hp": "100 10 wave * +",
+                "location": "random"
+            }              
         ]
    },
    {   
@@ -51,7 +57,14 @@
                 "hp": "75 50 wave *",
                 "damage": "base 10 +",
                 "location": "random bone"
-            }       
+            },
+            {
+                "enemy": "dragon",
+                "count": "wave 4 / 1 wave 4 % - *",
+                "hp": "80 10 wave * +",
+                "damage": "base 10 +",
+                "location": "random"
+            }         
         ]
    },
    {   
@@ -78,7 +91,14 @@
                 "hp": "75 15 wave *",
                 "damage": "base 5 -",
                 "location": "random bone"
-            }       
+            },
+            {
+                "enemy": "dragon",
+                "count": "wave 8 / 1 wave 8 % - *",
+                "hp": "80 8 wave * +",
+                "damage": "base 5 -",
+                "location": "random"
+            }         
         ]
    }
 ]

@@ -19,6 +19,13 @@
        "hp": 30,
        "speed": 7,
        "damage": 10
-   }
+   },
+   {
+    "name": "dragon",
+    "sprite": 31,
+    "hp": 100,
+    "speed": 10,
+    "damage": 20
+}
  
 ]
