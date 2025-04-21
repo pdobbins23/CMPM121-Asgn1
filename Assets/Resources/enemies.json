@@ -21,8 +21,8 @@
        "damage": 10
    },
    {
-    "name": "dragon",
-    "sprite": 31,
+    "name": "vampire",
+    "sprite": 2,
     "hp": 100,
     "speed": 10,
     "damage": 20
