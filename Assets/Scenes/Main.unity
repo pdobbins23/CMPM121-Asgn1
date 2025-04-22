@@ -1898,6 +1898,7 @@ MonoBehaviour:
   level_selector: {fileID: 1115058368}
   relicui: {fileID: 1202924358}
   button: {fileID: 6791571272867747119, guid: 47865e4d0d1669541a3aa2992225a687, type: 3}
+  gameOverButton: {fileID: 6791571272867747119, guid: d4fcb2fbb5d7a460faaa4f52051f9a45, type: 3}
   waveContinueButton: {fileID: 6791571272867747119, guid: b8a64e2722fde4e13aaf72e4baaabd85, type: 3}
   enemy: {fileID: 1832418719708313566, guid: bebfa21247182184d92ab200b93e6cf0, type: 3}
   SpawnPoints:
