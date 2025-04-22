@@ -26,7 +26,6 @@ public class WaveLabelController : MonoBehaviour
                 break;
             case GameManager.GameState.GAMEOVER:
                 tmp.text = "GAME OVER";
-                //enemyspawner.start?
                 break;
             default:
                 break;

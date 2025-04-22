@@ -12,16 +12,22 @@ public class EnemySpawner : MonoBehaviour
     public Image level_selector;
     public GameObject relicui;
     public GameObject button;
+    public GameObject gameOverButton;
     public GameObject waveContinueButton;
     public GameObject enemy;
     public SpawnPoint[] SpawnPoints;
     public Level currentLevel;
 
     private GameObject continueBtn;
+    private GameObject gameOverBtn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameOverBtn = Instantiate(gameOverButton, relicui.transform);
+        gameOverBtn.transform.localPosition = new Vector3(0, -100);
+        gameOverBtn.gameObject.SetActive(false);
+        
         continueBtn = Instantiate(waveContinueButton, relicui.transform);
         continueBtn.transform.localPosition = new Vector3(0, -100);
         continueBtn.gameObject.SetActive(false);
@@ -40,6 +46,9 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         switch (GameManager.Instance.state) {
+            case GameManager.GameState.PREGAME:
+                level_selector.gameObject.SetActive(true);
+                break;
             case GameManager.GameState.WAVEEND:
                 GameManager.Instance.currentWave++;
                     
@@ -52,6 +61,9 @@ public class EnemySpawner : MonoBehaviour
                     GameManager.Instance.state = GameManager.GameState.GAMEOVER;
 
                 }
+                break;
+            case GameManager.GameState.GAMEOVER:
+                gameOverBtn.gameObject.SetActive(true);
                 break;
             default:
                 break;
