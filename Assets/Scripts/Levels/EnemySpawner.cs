@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class EnemySpawner : MonoBehaviour
         gameOverBtn = Instantiate(gameOverButton, relicui.transform);
         gameOverBtn.transform.localPosition = new Vector3(0, -100);
         gameOverBtn.gameObject.SetActive(false);
+        gameOverBtn.GetComponent<Button>().onClick.AddListener(RestartGame);
+
         
         continueBtn = Instantiate(waveContinueButton, relicui.transform);
         continueBtn.transform.localPosition = new Vector3(0, -100);
@@ -160,4 +163,10 @@ public class EnemySpawner : MonoBehaviour
         
         yield return new WaitForSeconds(0.2f);
     }
+
+    public void RestartGame()
+{
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+}
+
 }
